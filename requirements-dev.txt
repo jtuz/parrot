@@ -1,0 +1,8 @@
+ipdb==0.13.2
+ipython==7.14.0
+django-debug-toolbar==2.2
+django-pdb==0.6.2
+django-profiler==2.0.0
+django-template-repl==0.3.0
+django-sass==1.0.0
+Werkzeug==1.0.1

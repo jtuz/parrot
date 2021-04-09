@@ -1,0 +1,8 @@
+{
+  "customer_name": "John Doe",
+  "order_items": [
+    {"product": "Torta", "price": 40.50, "quantity": 1},
+    {"product": "Torta de Jamon", "price": 50.50, "quantity": 2},
+    {"product": "Tacos de Pastor", "price": 20.50, "quantity": 3}
+  ]
+}

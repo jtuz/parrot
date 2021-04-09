@@ -1,0 +1,36 @@
+# Top-most editor config file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+# 4 space indentation for python files
+[*.py]
+indent_size = 4
+max_line_length = 100
+
+# 2 space indentation for yml,css,javascript,html file
+[*.{js,css,yml,yaml,html}]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+insert_final_newline = ignore
+
+[**/admin/js/vendor/**]
+indent_style = ignore
+indent_size = ignore
+
+# Minified JavaScript files shouldn't be changed
+[**.min.js]
+indent_style = ignore
+insert_final_newline = ignore
+
+[*.{md,txt,sh}]
+max_line_length = 80
+trim_trailing_whitespace = false
