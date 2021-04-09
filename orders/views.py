@@ -1,4 +1,3 @@
-import json
 from django.db import connection
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,6 +15,7 @@ from orders.serializers import (
 
 
 class TopProductViewSet(APIView):
+    permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [JSONRenderer]
 
     def get(self, request, format=None):
@@ -34,7 +34,7 @@ class TopProductViewSet(APIView):
 
         top_products = [{"product": row[0], "total_sell": row[1]} for row in rows]
 
-        return Response(json.dumps(top_products))
+        return Response(top_products)
 
 
 class OrderView(APIView):
