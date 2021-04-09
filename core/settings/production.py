@@ -35,7 +35,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(PROJECT_ROOT, 'log/noys.production.log'),  # noqa: F405
+            'filename': os.path.join(PROJECT_ROOT, 'parrot.production.log'),  # noqa: F405
             'formatter': 'verbose',
         },
         'mail_admins': {
