@@ -24,7 +24,7 @@ PROJECT_ROOT = BASE_DIR.parent
 env = environ.Env(
     DEBUG=(bool, True)
 )
-#  environ.Env.read_env()
+environ.Env.read_env()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')

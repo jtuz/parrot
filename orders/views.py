@@ -1,40 +1,25 @@
-from django.db import connection
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
+
+
+from orders.models import Product
 
 from rest_framework import (
     status,
-    viewsets,
     permissions
 )
 
 from orders.serializers import (
-    OrderSerializer
+    OrderSerializer,
+    TopProdutSerializer
 )
 
 
-class TopProductViewSet(APIView):
+class TopProductView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    renderer_classes = [JSONRenderer]
-
-    def get(self, request, format=None):
-        cursor = connection.cursor()
-        cursor.execute(
-            """
-            SELECT p.name,SUM(I.quantity) as total_vendidos
-            FROM orders_order O
-            JOIN orders_orderitem I ON O.id=I.order_id
-            LEFT JOIN orders_product P ON I.product_id=P.id
-            GROUP BY p.name
-            ORDER BY total_vendidos DESC;
-            """
-        )
-        rows = cursor.fetchall()
-
-        top_products = [{"product": row[0], "total_sell": row[1]} for row in rows]
-
-        return Response(top_products)
+    queryset = Product.objects.top()
+    serializer_class = TopProdutSerializer
 
 
 class OrderView(APIView):

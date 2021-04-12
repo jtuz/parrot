@@ -1,3 +1,4 @@
+
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
 from django.db.utils import IntegrityError
@@ -63,7 +64,10 @@ class OrderSerializer(serializers.BaseSerializer):
         return current_product
 
 
-class ItemsSerializer(serializers.PrimaryKeyRelatedField):
+class TopProdutSerializer(serializers.ModelSerializer):
+    product_name = serializers.CharField(read_only=True)
+    total_sells = serializers.IntegerField()
+
     class Meta:
-        model = OrderItem
-        fields = ['product', 'quantity']
+        model = Product
+        fields = ('product_name', 'total_sells')

@@ -1,18 +1,13 @@
-#  from rest_framework import routers
-from django.urls import include, path
+from django.urls import path
 
 from orders.views import (
     OrderView,
-    TopProductViewSet
+    TopProductView
 )
-
-#  router = routers.DefaultRouter()
-#  router.register(r'sells', TopProductViewSet)
 
 app_name = 'orders'
 
 urlpatterns = [
-    #  path('', include(router.urls)),
+    path('sells/', TopProductView.as_view()),
     path('order/', OrderView.as_view()),
-    path('sells/', TopProductViewSet.as_view())
 ]
